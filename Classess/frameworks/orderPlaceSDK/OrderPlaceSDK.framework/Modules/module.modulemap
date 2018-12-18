@@ -1,0 +1,11 @@
+framework module OrderPlaceSDK {
+  umbrella header "OrderPlaceSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module OrderPlaceSDK.Swift {
+    header "OrderPlaceSDK-Swift.h"
+    requires objc
+}

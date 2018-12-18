@@ -1,0 +1,11 @@
+framework module OrderPlaceAlipaySDK {
+  umbrella header "OrderPlaceAlipaySDK.h"
+
+  export *
+  module * { export * }
+}
+
+module OrderPlaceAlipaySDK.Swift {
+    header "OrderPlaceAlipaySDK-Swift.h"
+    requires objc
+}

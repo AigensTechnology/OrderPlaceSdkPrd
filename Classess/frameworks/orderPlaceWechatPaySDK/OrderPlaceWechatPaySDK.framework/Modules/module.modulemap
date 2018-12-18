@@ -1,0 +1,11 @@
+framework module OrderPlaceWechatPaySDK {
+  umbrella header "OrderPlaceWechatPaySDK.h"
+
+  export *
+  module * { export * }
+}
+
+module OrderPlaceWechatPaySDK.Swift {
+    header "OrderPlaceWechatPaySDK-Swift.h"
+    requires objc
+}
