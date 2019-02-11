@@ -275,11 +275,28 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 @end
 
 
+SWIFT_PROTOCOL("_TtP13OrderPlaceSDK19StripeAppleDelegate_")
+@protocol StripeAppleDelegate
+- (void)stripeAppleInitialize;
+- (void)stripeAppleMakePaymentRequest:(NSDictionary * _Nonnull)body :(CallbackHandler * _Nullable)callback;
+- (void)stripeAppleCompleteLastTransaction:(NSDictionary * _Nonnull)body :(CallbackHandler * _Nullable)callback;
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable options;
+@property (nonatomic, strong) UIViewController * _Nullable baseViewController;
+@end
+
+
 SWIFT_PROTOCOL("_TtP13OrderPlaceSDK17WeChatPayDelegate_")
 @protocol WeChatPayDelegate
 - (void)wechatPayOrderWithBody:(NSDictionary * _Nonnull)body callback:(CallbackHandler * _Nullable)callback;
 - (void)wechatGetVersionWithCallback:(CallbackHandler * _Nullable)callback;
 - (void)wechatApplicationOpenUrl:(UIApplication * _Nonnull)app url:(NSURL * _Nonnull)url;
+@end
+
+
+SWIFT_PROTOCOL("_TtP13OrderPlaceSDK14cardIODelegate_")
+@protocol cardIODelegate
+- (void)scanWithBody:(NSDictionary * _Nonnull)body callback:(CallbackHandler * _Nullable)callback;
+- (void)initialize;
 @end
 
 #if __has_attribute(external_source_symbol)

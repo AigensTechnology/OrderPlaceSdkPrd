@@ -1,0 +1,11 @@
+framework module OrderPlaceStripeAppleSDK {
+  umbrella header "OrderPlaceStripeAppleSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module OrderPlaceStripeAppleSDK.Swift {
+    header "OrderPlaceStripeAppleSDK-Swift.h"
+    requires objc
+}
