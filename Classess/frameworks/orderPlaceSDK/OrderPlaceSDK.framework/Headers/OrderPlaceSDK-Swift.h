@@ -230,9 +230,9 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10GpsService")
 
 SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 @interface OrderPlace : NSObject
-+ (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options;
-+ (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options services:(NSArray<OrderPlaceService *> * _Nonnull)services;
-+ (void)scanWithCaller:(UIViewController * _Nonnull)caller options:(NSDictionary<NSString *, id> * _Nonnull)options;
++ (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
++ (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options services:(NSArray<OrderPlaceService *> * _Nonnull)services closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
++ (void)scanWithCaller:(UIViewController * _Nonnull)caller options:(NSDictionary<NSString *, id> * _Nonnull)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
 + (void)application:(UIApplication * _Nonnull)app open:(NSURL * _Nonnull)url;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -272,6 +272,12 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 
 @interface OrderViewController (SWIFT_EXTENSION(OrderPlaceSDK)) <UINavigationControllerDelegate>
 - (void)navigationController:(UINavigationController * _Nonnull)navigationController willShowViewController:(UIViewController * _Nonnull)viewController animated:(BOOL)animated;
+@end
+
+@class UIScrollView;
+
+@interface OrderViewController (SWIFT_EXTENSION(OrderPlaceSDK)) <UIScrollViewDelegate>
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 @end
 
 
