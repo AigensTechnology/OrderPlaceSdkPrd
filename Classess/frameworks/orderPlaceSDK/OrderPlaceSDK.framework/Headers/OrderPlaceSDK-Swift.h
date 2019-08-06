@@ -233,7 +233,9 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 + (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
 + (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options services:(NSArray<OrderPlaceService *> * _Nonnull)services closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
 + (void)scanWithCaller:(UIViewController * _Nonnull)caller options:(NSDictionary<NSString *, id> * _Nonnull)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
++ (void)scanDecodeWithCaller:(UIViewController * _Nonnull)caller options:(NSDictionary<NSString *, id> * _Nullable)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
 + (void)application:(UIApplication * _Nonnull)app open:(NSURL * _Nonnull)url;
++ (NSString * _Nullable)getImagePathWithNameWithName:(NSString * _Nonnull)name type:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -259,6 +261,9 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK19OrderViewController")
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptConfirmPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptTextInputPanelWithPrompt:(NSString * _Nonnull)prompt defaultText:(NSString * _Nullable)defaultText initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(NSString * _Nullable))completionHandler;
 @property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewDidAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
@@ -289,6 +294,8 @@ SWIFT_PROTOCOL("_TtP13OrderPlaceSDK19StripeAppleDelegate_")
 @property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable options;
 @property (nonatomic, strong) UIViewController * _Nullable baseViewController;
 @end
+
+
 
 
 SWIFT_PROTOCOL("_TtP13OrderPlaceSDK17WeChatPayDelegate_")
