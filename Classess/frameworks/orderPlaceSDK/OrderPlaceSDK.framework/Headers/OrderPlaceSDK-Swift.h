@@ -234,6 +234,8 @@ SWIFT_CLASS("_TtC13OrderPlaceSDK10OrderPlace")
 + (void)openUrlWithCaller:(UIViewController * _Nonnull)caller url:(NSString * _Nonnull)url options:(NSDictionary<NSString *, id> * _Nonnull)options services:(NSArray<OrderPlaceService *> * _Nonnull)services closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
 + (void)scanWithCaller:(UIViewController * _Nonnull)caller options:(NSDictionary<NSString *, id> * _Nonnull)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
 + (void)scanDecodeWithCaller:(UIViewController * _Nonnull)caller options:(NSDictionary<NSString *, id> * _Nullable)options closeCB:(void (^ _Nullable)(id _Nullable))closeCB;
++ (void)checkCameraPermissionWithCallback:(void (^ _Nullable)(BOOL))callback;
++ (void)openSetting;
 + (void)application:(UIApplication * _Nonnull)app open:(NSURL * _Nonnull)url;
 + (NSString * _Nullable)getImagePathWithNameWithName:(NSString * _Nonnull)name type:(NSString * _Nonnull)type SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
