@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name = "OrderPlaceSdkPrd"
-s.version = "0.1.1"
+s.version = "0.2.0"
 s.summary = "Order Place Sdk Prd"
 
 s.description = <<-DESC
@@ -15,8 +15,8 @@ s.author = { "风筝" => "13286953452@126.com" }
 
 s.source = { :git => "https://github.com/AigensTechnology/OrderPlaceSdkPrd.git", :tag => "#{s.version}" }
 
-s.ios.deployment_target = "8.0"
-s.swift_version = '4.0'
+s.ios.deployment_target = "9.0"
+s.swift_version = '5.0'
 s.static_framework = true
 
 s.frameworks = 'AVFoundation', 'WebKit', 'UIKit', 'Foundation', 'PassKit', 'AddressBook'
@@ -35,18 +35,18 @@ ali.libraries = 'z', 'c++'
 ali.dependency 'OrderPlaceSdkPrd/Core'
 end
 
-s.subspec "Wechat" do |wechat|
-wechat.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceWechatPaySDK/OrderPlaceWechatPaySDK.framework'
-wechat.ios.vendored_library = 'Classess/frameworks/orderPlaceWechatPaySDK/libWeChatSDK.a'
-wechat.frameworks = 'SystemConfiguration', 'Security', 'CoreTelephony', 'CFNetwork'
-wechat.libraries = 'z', 'c++', 'sqlite3.0'
-wechat.dependency 'OrderPlaceSdkPrd/Core'
-end
+# s.subspec "Wechat" do |wechat|
+# wechat.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceWechatPaySDK/OrderPlaceWechatPaySDK.framework'
+# wechat.ios.vendored_library = 'Classess/frameworks/orderPlaceWechatPaySDK/libWeChatSDK.a'
+# wechat.frameworks = 'SystemConfiguration', 'Security', 'CoreTelephony', 'CFNetwork'
+# wechat.libraries = 'z', 'c++', 'sqlite3.0'
+# wechat.dependency 'OrderPlaceSdkPrd/Core'
+# end
 
-s.subspec "StripeApple" do |sa|
-sa.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceStripeAppleSDK/Stripe.framework', 'Classess/frameworks/orderPlaceStripeAppleSDK/OrderPlaceStripeAppleSDK.framework'
-sa.dependency 'OrderPlaceSdkPrd/Core'
-end
+# s.subspec "StripeApple" do |sa|
+# sa.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceStripeAppleSDK/Stripe.framework', 'Classess/frameworks/orderPlaceStripeAppleSDK/OrderPlaceStripeAppleSDK.framework'
+# sa.dependency 'OrderPlaceSdkPrd/Core'
+# end
 
 
 

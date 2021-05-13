@@ -1,0 +1,22 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target armv7-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OrderPlaceAlipaySDK
+@_exported import OrderPlaceAlipaySDK
+import OrderPlaceSDK
+import Swift
+import UIKit
+import WebKit
+@_inheritsConvenienceInitializers @objc public class AlipayExecutor : ObjectiveC.NSObject {
+  @objc required override dynamic public init()
+  @objc deinit
+}
+extension AlipayExecutor : OrderPlaceSDK.AlipayDelegate {
+  @objc dynamic public var AliapyWebView: WebKit.WKWebView? {
+    @objc get
+    @objc set
+  }
+  @objc dynamic public func AlipayOrder(body: Foundation.NSDictionary, callback: OrderPlaceSDK.CallbackHandler?)
+  @objc dynamic public func AlipayGetVersion(callback: OrderPlaceSDK.CallbackHandler?)
+  @objc dynamic public func AlipayApplicationOpenUrl(_ app: UIKit.UIApplication, url: Foundation.URL)
+  @objc dynamic public func AlipayFetchOrderInfo(url: Swift.String, alipayScheme: Swift.String) -> Swift.Bool
+}

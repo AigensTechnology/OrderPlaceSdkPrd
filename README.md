@@ -24,13 +24,13 @@ it, simply add the following line to your Podfile:
 * This is core function, including (scan / gps / apple pay)
 
 ```ruby
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'YourProjectName' do
 
   use_frameworks!
 
-pod 'OrderPlaceSdkPrd', '~> 0.1.0'
+pod 'OrderPlaceSdkPrd', '~> 0.2.0'
 
 end
 
@@ -39,14 +39,8 @@ end
 * If you want the alipay feature,pls
 
 ```rb
-pod 'OrderPlaceSdkPrd/Alipay', '~> 0.1.0'
+pod 'OrderPlaceSdkPrd/Alipay', '~> 0.2.0'
 ```
-* If you want the wechat pay feature,pls
-
-```rb
-pod 'OrderPlaceSdkPrd/Wechat', '~> 0.1.0'
-```
-
 ## Author
 
 Aigens
@@ -54,5 +48,11 @@ Aigens
 ## License
 
 coming soon
+
+
+## update record
+
+alipay , support WKWebview
+
 
 
