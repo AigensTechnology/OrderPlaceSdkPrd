@@ -28,7 +28,7 @@ protocol OrderPlaceDelegate: AnyObject {
 
         JJPrint("podBundle", podBundle.bundlePath)
 
-        let bundleURL = podBundle.url(forResource: "OrderPlaceSdk", withExtension: "bundle")
+        let bundleURL = podBundle.url(forResource: "OrderPlaceSdkPrd", withExtension: "bundle")
 
         var bundle = podBundle
 
