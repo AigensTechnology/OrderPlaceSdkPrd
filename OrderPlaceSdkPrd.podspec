@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name = "OrderPlaceSdkPrd"
-s.version = "0.2.0"
+s.version = "0.2.1"
 s.summary = "Order Place Sdk Prd"
 
 s.description = <<-DESC
@@ -24,16 +24,22 @@ s.frameworks = 'AVFoundation', 'WebKit', 'UIKit', 'Foundation', 'PassKit', 'Addr
 s.default_subspec = 'Core'
 
 s.subspec "Core" do |core|
-core.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceSDK/OrderPlaceSDK.framework'
+# core.resource_bundles = {
+#       'OrderPlaceSdkPrd' => ['OrderPlaceSdk/Assets/**/*.{storyboard,xib,bundle,png}']
+# }
+core.resources = ['OrderPlaceSdk/Assets/AlipaySDK.bundle', 'OrderPlaceSdk/Assets/*.png', 'OrderPlaceSdk/Assets/*.xib', 'OrderPlaceSdk/Assets/*.storyboard']
+core.source_files = 'OrderPlaceSdk/Classes/**/*'
+  
+# core.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceSDK/OrderPlaceSDK.framework'
 end
 
-s.subspec "Alipay" do |ali|
-ali.resources = ['Classess/Assets/AlipaySDK.bundle']
-ali.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceAlipaySDK/AlipaySDK.framework', 'Classess/frameworks/orderPlaceAlipaySDK/OrderPlaceAlipaySDK.framework'
-ali.frameworks = 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'CFNetwork', 'CoreMotion'
-ali.libraries = 'z', 'c++'
-ali.dependency 'OrderPlaceSdkPrd/Core'
-end
+# s.subspec "Alipay" do |ali|
+# ali.resources = ['Classess/Assets/AlipaySDK.bundle']
+# ali.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceAlipaySDK/AlipaySDK.framework', 'Classess/frameworks/orderPlaceAlipaySDK/OrderPlaceAlipaySDK.framework'
+# ali.frameworks = 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'CFNetwork', 'CoreMotion'
+# ali.libraries = 'z', 'c++'
+# ali.dependency 'OrderPlaceSdkPrd/Core'
+# end
 
 # s.subspec "Wechat" do |wechat|
 # wechat.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceWechatPaySDK/OrderPlaceWechatPaySDK.framework'

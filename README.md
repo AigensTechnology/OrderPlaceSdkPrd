@@ -30,16 +30,10 @@ target 'YourProjectName' do
 
   use_frameworks!
 
-pod 'OrderPlaceSdkPrd', '~> 0.2.0'
+pod 'OrderPlaceSdkPrd', '~> 0.2.1'
 
 end
 
-```
-
-* If you want the alipay feature,pls
-
-```rb
-pod 'OrderPlaceSdkPrd/Alipay', '~> 0.2.0'
 ```
 ## Author
 
