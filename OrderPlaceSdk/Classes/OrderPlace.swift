@@ -63,9 +63,9 @@ protocol OrderPlaceDelegate: AnyObject {
         }
         
         JJPrint("open url")
-        let controller = makeViewController(vcId: "OrderViewControllerNav") as! UINavigationController;
+        guard let controller = makeViewController(vcId: "OrderViewControllerNav") as? UINavigationController else { return }
 
-        let orderVC = controller.topViewController as! OrderViewController;
+        guard let orderVC = controller.topViewController as? OrderViewController else { return }
 
         orderVC.url = url;
         orderVC.options = options;
@@ -106,9 +106,9 @@ protocol OrderPlaceDelegate: AnyObject {
             
         }
 
-        let controller = makeViewController(vcId: "OrderViewControllerNav") as! UINavigationController;
+        guard let controller = makeViewController(vcId: "OrderViewControllerNav") as? UINavigationController else { return }
 
-        let orderVC = controller.topViewController as! OrderViewController;
+        guard let orderVC = controller.topViewController as? OrderViewController else { return }
         orderVC.url = url;
         orderVC.options = options;
         orderVC.extraServices = services;
@@ -136,9 +136,9 @@ protocol OrderPlaceDelegate: AnyObject {
 
     @objc public static func scan(caller: UIViewController, options: [String: Any],closeCB: ((Any?) -> Void)? = nil) {
 
-        let controller = makeViewController(vcId: "ScannerViewControllerNav") as! UINavigationController;
+        guard let controller = makeViewController(vcId: "ScannerViewControllerNav") as? UINavigationController else { return }
 
-        let scanVC = controller.topViewController as! ScannerViewController;
+        guard let scanVC = controller.topViewController as? ScannerViewController else { return }
         scanVC.options = options;
         scanVC.closeCB = closeCB;
         self.OPDelegate = ScannerManager.shared;
@@ -153,8 +153,8 @@ protocol OrderPlaceDelegate: AnyObject {
         var params : [String: Any] = options ?? [:];
         params["onlyScan"] = true;
         
-        let controller = makeViewController(vcId: "ScannerViewControllerNav") as! UINavigationController;
-        let scanVC = controller.topViewController as! ScannerViewController;
+        guard let controller = makeViewController(vcId: "ScannerViewControllerNav") as? UINavigationController else { return }
+        guard let scanVC = controller.topViewController as? ScannerViewController else { return }
         scanVC.options = params;
         scanVC.closeCB = closeCB;
         
