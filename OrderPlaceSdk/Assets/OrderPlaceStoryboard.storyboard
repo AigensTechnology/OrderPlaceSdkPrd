@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ohi-ae-13O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ohi-ae-13O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Order View Controller-->
         <scene sceneID="XzI-cy-pOO">
             <objects>
-                <viewController id="paw-ot-egZ" customClass="OrderViewController" customModule="OrderPlaceSdk_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="paw-ot-egZ" customClass="OrderViewController" customModule="OrderPlaceSdkPrd" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fmh-lC-050"/>
                         <viewControllerLayoutGuide type="bottom" id="7s4-lF-lIa"/>
@@ -71,7 +70,7 @@
         <!--Scanner View Controller-->
         <scene sceneID="pn4-t0-k9s">
             <objects>
-                <viewController storyboardIdentifier="ScannerViewController" id="RX8-tE-inH" customClass="ScannerViewController" customModule="OrderPlaceSdk_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScannerViewController" id="RX8-tE-inH" customClass="ScannerViewController" customModule="OrderPlaceSdkPrd" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IPy-1N-N8F"/>
                         <viewControllerLayoutGuide type="bottom" id="JmP-j7-eAY"/>
@@ -83,7 +82,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFl-kY-gPG">
                                 <rect key="frame" x="0.0" y="762" width="414" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBd-CN-ga1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBd-CN-ga1">
                                         <rect key="frame" x="10" y="52" width="65" height="38"/>
                                         <color key="backgroundColor" red="0.80332455739999997" green="0.93172854839999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -163,6 +162,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DTv-kX-oCc"/>
+        <segue reference="fwc-AE-945"/>
     </inferredMetricsTieBreakers>
 </document>
