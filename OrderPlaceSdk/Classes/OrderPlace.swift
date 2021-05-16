@@ -84,6 +84,8 @@ protocol OrderPlaceDelegate: AnyObject {
         if let push = options["presentationAnimate"] as? Bool, push == true {
             let aigensPresentationController = AigensPresentationController(presentedViewController: controller, presenting: caller)
             controller.transitioningDelegate = aigensPresentationController
+            caller.present(controller, animated: true, completion: nil)
+            return
         }
 
         caller.present(controller, animated: true, completion: nil)
@@ -125,12 +127,12 @@ protocol OrderPlaceDelegate: AnyObject {
         if let push = options["presentationAnimate"] as? Bool, push == true {
             let aigensPresentationController = AigensPresentationController(presentedViewController: controller, presenting: caller)
             controller.transitioningDelegate = aigensPresentationController
+            caller.present(controller, animated: true, completion: nil)
+            return
         }
         
         caller.present(controller, animated: true, completion: nil)
         
-//        openUrl(caller: caller, url: url, options: options, closeCB: closeCB)
-        //openUrl(caller: caller, url: url, options: options)
 
     }
 
