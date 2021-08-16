@@ -933,7 +933,7 @@ public func JJPrint<T>(_ message: T, file: String = #file, _ func: String = #fun
 
 
 extension UIColor {
-    static func getHex(hex: String) -> UIColor? {
+    static func getHex(hex: String, _ alpha: CGFloat = 1) -> UIColor? {
         guard !hex.isEmpty && hex.hasPrefix("#") else { return nil }
         var rgbValue: UInt32 = 0
         let scanner = Scanner(string: hex)
@@ -942,6 +942,6 @@ extension UIColor {
         return UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0xFF00) >> 8) / 255.0,
             blue: CGFloat((rgbValue & 0xFF)) / 255.0,
-            alpha: 1);
+            alpha: alpha);
     }
 }

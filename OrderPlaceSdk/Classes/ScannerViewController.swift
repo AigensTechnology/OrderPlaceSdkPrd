@@ -29,8 +29,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     private var minView: UIView!
     private var reticleView: UIView!
 
-    private let buildReticleColor = UIColor(red: 0.86, green: 0.56, blue: 0.43, alpha: 0.50);
-    private let minViewColor = UIColor(red: 0.96, green: 0.46, blue: 0.10, alpha: 1.00);
+    private var buildReticleColor = UIColor(red: 0.86, green: 0.56, blue: 0.43, alpha: 0.50);
+    private var minViewColor = UIColor(red: 0.96, green: 0.46, blue: 0.10, alpha: 1.00);
 
 //    private let RETICLE_SIZE: CGFloat = 500.0;
     private let RETICLE_OFFSET: CGFloat = 60.0;
@@ -39,11 +39,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     private let MINVIEW_WIDTH: CGFloat = 2.0;
     private let SCREEN_HEIGHT = UIScreen.main.bounds.height;
     private let SCREEN_WIDTH = UIScreen.main.bounds.width;
+    private var minAxis: CGFloat = 0;
     private var onlyScan = false;
     var lang = "en";
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        minAxis = min(SCREEN_HEIGHT, SCREEN_WIDTH);
         view.frame = UIScreen.main.bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = UIColor.clear
@@ -91,7 +93,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
         captureSession.startRunning();
 
-        addReticleView();
+        
 
         if self.options != nil, let scan = self.options!["onlyScan"] as? Bool {
             self.onlyScan = scan
@@ -99,6 +101,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if self.options != nil, let language = self.options!["language"] as? String {
             self.lang = language
         }
+        
+        if self.options != nil, let scanStyle = self.options["scanStyle"] as? [String: Any], let borderColor = scanStyle["borderColor"] as? String {
+            if let buildReticleColor = UIColor.getHex(hex: borderColor, 0.5) {
+                self.buildReticleColor = buildReticleColor
+            }
+            if let minViewColor = UIColor.getHex(hex: borderColor, 1.0) {
+                self.minViewColor = minViewColor
+            }
+            
+        }
+        
+        addReticleView();
     }
 
 
@@ -284,26 +298,26 @@ extension ScannerViewController {
         guard let reticleImage = buildReticleImage() else { return; }
 
         let reticleView = UIImageView(image: reticleImage);
+        reticleView.contentMode = .scaleAspectFit
 
-        let minAxis: CGFloat = min(SCREEN_HEIGHT, SCREEN_WIDTH);
         let rectArea = CGRect(x: CGFloat(0.5 * (SCREEN_WIDTH - minAxis)), y: CGFloat(0.5 * (SCREEN_HEIGHT - minAxis)), width: minAxis, height: minAxis);
         reticleView.frame = rectArea;
         reticleView.isOpaque = false
         reticleView.contentMode = .scaleAspectFit
         reticleView.autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin];
         if let midImage = buildMinBar() {
+            
             let minView = UIImageView(image: midImage);
             minView.isOpaque = false
             minView.contentMode = .scaleAspectFit
             minView.autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin];
-            minView.frame = CGRect(x: RETICLE_OFFSET + (RETICLE_WIDTH * 0.5), y: RETICLE_OFFSET + (RETICLE_WIDTH * 0.5), width: (SCREEN_WIDTH - 2 * RETICLE_OFFSET - RETICLE_WIDTH), height: MINVIEW_WIDTH);
+            minView.frame = CGRect(x: RETICLE_OFFSET + (RETICLE_WIDTH * 0.5), y: RETICLE_OFFSET + (RETICLE_WIDTH * 0.5), width: (minAxis - 2 * RETICLE_OFFSET - RETICLE_WIDTH), height: MINVIEW_WIDTH);
             self.minView = minView;
             reticleView.addSubview(minView)
         }
         self.reticleView = reticleView;
         reticleView.clipsToBounds = true;
         view.addSubview(reticleView);
-
 
         addDrawView(rectArea);
 
@@ -315,8 +329,8 @@ extension ScannerViewController {
         var blankF = rectArea
         blankF.origin.x += RETICLE_OFFSET;
         blankF.origin.y += RETICLE_OFFSET;
-        blankF.size.height = SCREEN_WIDTH - 2 * RETICLE_OFFSET;
-        blankF.size.width = SCREEN_WIDTH - 2 * RETICLE_OFFSET;
+        blankF.size.height = minAxis - 2 * RETICLE_OFFSET;
+        blankF.size.width = minAxis - 2 * RETICLE_OFFSET;
         drawView.blankFramework = blankF;
         view.insertSubview(drawView, at: 1)
     }
@@ -335,11 +349,11 @@ extension ScannerViewController {
     private func buildMinBar() -> UIImage? {
         var result: UIImage? = nil;
 
-        UIGraphicsBeginImageContext(CGSize(width: SCREEN_WIDTH, height: MINVIEW_WIDTH))
+        UIGraphicsBeginImageContext(CGSize(width: minAxis, height: MINVIEW_WIDTH))
         let context = UIGraphicsGetCurrentContext()
         context?.setStrokeColor(minViewColor.cgColor)
         context?.setLineWidth(RETICLE_WIDTH)
-        context?.stroke(CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: MINVIEW_WIDTH))
+        context?.stroke(CGRect(x: 0, y: 0, width: minAxis, height: MINVIEW_WIDTH))
         result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
@@ -348,11 +362,11 @@ extension ScannerViewController {
 
     private func buildReticleImage() -> UIImage? {
         var result: UIImage? = nil;
-        UIGraphicsBeginImageContext(CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH))
+        UIGraphicsBeginImageContext(CGSize(width: minAxis, height: minAxis))
         let context = UIGraphicsGetCurrentContext()
         context?.setStrokeColor(buildReticleColor.cgColor);
         context?.setLineWidth(RETICLE_WIDTH)
-        context?.stroke(CGRect(x: RETICLE_OFFSET, y: RETICLE_OFFSET, width: SCREEN_WIDTH - 2 * RETICLE_OFFSET, height: SCREEN_WIDTH - 2 * RETICLE_OFFSET))
+        context?.stroke(CGRect(x: RETICLE_OFFSET, y: RETICLE_OFFSET, width: minAxis - 2 * RETICLE_OFFSET, height: minAxis - 2 * RETICLE_OFFSET))
         result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return result;
