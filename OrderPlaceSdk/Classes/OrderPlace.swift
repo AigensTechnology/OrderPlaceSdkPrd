@@ -152,18 +152,28 @@ protocol OrderPlaceDelegate: AnyObject {
     }
     
     @objc public static func scanDecode(caller: UIViewController, options: [String: Any]?,closeCB: ((Any?) -> Void)? = nil) {
-        var params : [String: Any] = options ?? [:];
-        params["onlyScan"] = true;
+        let params : [String: Any] = options ?? [:];
+        // params["onlyScan"] = true;
         
-        guard let controller = makeViewController(vcId: "ScannerViewControllerNav") as? UINavigationController else { return }
-        guard let scanVC = controller.topViewController as? ScannerViewController else { return }
-        scanVC.options = params;
-        scanVC.closeCB = closeCB;
+        // guard let controller = makeViewController(vcId: "ScannerViewControllerNav") as? UINavigationController else { return }
+        // guard let scanVC = controller.topViewController as? ScannerViewController else { return }
+        // scanVC.options = params;
+        // scanVC.closeCB = closeCB;
         
-        controller.modalPresentationStyle = .fullScreen;
+        // controller.modalPresentationStyle = .fullScreen;
         
-        self.OPDelegate = ScannerManager.shared;
-        caller.present(controller, animated: true, completion: nil)
+        // self.OPDelegate = ScannerManager.shared;
+        // caller.present(controller, animated: true, completion: nil)
+
+        guard let vc = LBXScanNativeViewController (success: { reslut in
+            let result = ["decodeResult":reslut];
+            closeCB?(result)
+        }) else {return}
+        if let language = params["language"] as? String {
+            vc.language = language
+        }
+        vc.modalPresentationStyle = .fullScreen
+        caller.present(vc, animated: true, completion: nil)
         
     }
     
