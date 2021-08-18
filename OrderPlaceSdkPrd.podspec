@@ -27,7 +27,7 @@ s.subspec "Core" do |core|
 # core.resource_bundles = {
 #       'OrderPlaceSdkPrd' => ['OrderPlaceSdk/Assets/**/*.{storyboard,xib,bundle,png}']
 # }
-core.resources = ['OrderPlaceSdk/Assets/AlipaySDK.bundle', 'OrderPlaceSdk/Assets/*.png', 'OrderPlaceSdk/Assets/*.xib', 'OrderPlaceSdk/Assets/*.storyboard']
+core.resources = ['OrderPlaceSdk/Assets/AlipaySDK.bundle','OrderPlaceSdk/Assets/CodeScan.bundle', 'OrderPlaceSdk/Assets/*.png', 'OrderPlaceSdk/Assets/*.xib', 'OrderPlaceSdk/Assets/*.storyboard']
 core.source_files = 'OrderPlaceSdk/Classes/**/*'
   
 # core.ios.vendored_frameworks = 'Classess/frameworks/orderPlaceSDK/OrderPlaceSDK.framework'
