@@ -114,6 +114,7 @@ protocol OrderPlaceDelegate: AnyObject {
         orderVC.url = url;
         orderVC.options = options;
         orderVC.extraServices = services;
+        orderVC.closeCB = closeCB;
         self.OPDelegate = orderVC
         
         if let follow = options["followiOS11"] as? Bool {

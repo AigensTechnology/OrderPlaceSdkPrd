@@ -1,0 +1,1 @@
+pod spec lint OrderPlaceSdkPrd.podspec --allow-warnings

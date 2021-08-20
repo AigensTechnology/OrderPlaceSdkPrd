@@ -1,0 +1,1 @@
+pod trunk push OrderPlaceSdkPrd.podspec --allow-warnings
