@@ -1,0 +1,4 @@
+0.4.5  ---- exhaustive condition of switch case in Swift
+0.4.4  ---- open with services add: orderVC.closeCB = closeCB; 
+0.4.3  ---- scan use lib
+0.4.2  ---- scan use lib
