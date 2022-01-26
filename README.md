@@ -30,7 +30,7 @@ target 'YourProjectName' do
 
   use_frameworks!
 
-pod 'OrderPlaceSdkPrd', '~> 0.4.5'
+pod 'OrderPlaceSdkPrd', '~> 0.4.6'
 
 end
 
